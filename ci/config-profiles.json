@@ -38,9 +38,5 @@
   {
     "name": "assertions-always-abort",
     "generate-args": "-DFW_ASSERTIONS_ALWAYS_ABORT=1"
-  },
-  {
-    "name": "no-cmd-residual-check",
-    "generate-args": "-DFW_CMD_CHECK_RESIDUAL=0"
   }
 ]

@@ -335,30 +335,6 @@ compiles out the code and format strings for text logging. Table 46 provides the
 > [!NOTE]
 > The `FW_LOG_TEXT_BUFFER_SIZE` should be large enough to store the full event including its text format string after being populated with arguments.
 
-
-### Misc Configuration Settings
-
-This setting describes some of the other settings available in `FpConfig.hpp` and did not fit in other sections. These
-are described in the tables below.
-
-Table 47 describes other user settings.
-
-**Table 47.** Misc macros available to the user.
-
-| Macro                       | Definition                                              | Default | Valid Values     |
-| --------------------------- | --------------------------------------------------------|---------|------------------|
-| FW_CMD_CHECK_RESIDUAL       | Enables command serialization extra bytes check         | 1 (on)  | 0 (off) 1 (on)   |
-| FW_AMPCS_COMPATIBLE         | Adds argument sizes to event argument serialization     | 0 (off) | 0 (off) 1 (on)   |
-
-> [!NOTE]
-> Normally when a command is deserialized, the handler checks to see if there are any leftover bytes in the buffer. If there are, it assumes that the command was corrupted somehow since the serialized size should match the serialized size of the argument list. In some cases, command buffers are padded so the data can be larger than the serialized size of the command. Turning `FW_CMD_CHECK_RESIDUAL` off can disable this check and allow leftover bytes.
-
-> [!NOTE]
-> Some ground systems require the size of the event argument to be serialized into the buffer instead of predicting the size using the dictionary. Setting `FW_AMPCS_COMPATIBLE` will serialize these sizes into the event buffers **and** break compatibility with the F´ ground system as it does not use this feature.
-
-> [!NOTE]
-> The following settings are defined by the build system and are in `FpConfig.hpp` to provide a default off value. These must be set by the build system as the setting works in unison with other modules that the build system includes when enabling these settings.
-
 ## Component Configuration
 
 Component configurations are also provided as part of the project's config directory. If the directory is not provided,
